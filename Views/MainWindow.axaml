@@ -1,0 +1,74 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:P_SuiteVisual.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="P_SuiteVisual.Views.MainWindow"
+        x:DataType="vm:MainViewModel"
+        Icon="/Assets/avalonia-logo.ico"
+        Title="P_SuiteVisual"
+        >
+
+    <Design.DataContext>
+        <!-- This only sets the DataContext for the previewer in an IDE,
+             to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
+        <vm:MainViewModel />
+    </Design.DataContext>
+    <Grid ShowGridLines="False" ColumnDefinitions="Auto,*" RowDefinitions="Auto,*,Auto">
+
+           <Canvas Background="#387780" Grid.Row="4" Grid.ColumnSpan="2">
+             <Rectangle></Rectangle>
+            </Canvas>
+
+        <!-- <TextBlock Grid.Row="0" Text="{Binding LandingPageTxt}"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Bottom"
+                Margin="15"
+                FontSize="12"
+                 /> -->
+        <Panel Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left">
+            <Image Source="/Assets/Futuristic.png" Width="140" />
+        </Panel>
+
+           <TableView  ItemsSource="{Binding inventory}" Margin="10" Grid.Row="1" Grid.Column="1"  >
+             <TableView.Columns >
+                <TableViewColumn Width="90" Header="ID" Binding="{Binding IDnumber}" />
+                <TableViewColumn Header="Name" Binding="{Binding Name}" />
+                <TableViewColumn Header="Expiry" Binding="{Binding Expiry}"/>
+            </TableView.Columns> 
+        </TableView>
+        
+
+                <!--="Center Console Buttons"-->
+        <StackPanel 
+         Grid.Row="1"
+         Grid.Column="0"
+         Grid.ColumnSpan="1"
+         Orientation="Vertical"
+         VerticalAlignment="Top"
+         HorizontalAlignment="Left"
+         Spacing="25"
+         Margin="5"
+         > 
+            <Button FontSize="14" Background="#DBD4D3" HorizontalAlignment="Stretch"> Add Item</Button>
+            <Button FontSize="14" Background="#DBD4D3"  HorizontalAlignment="Stretch"> Update Name</Button>
+            <Button FontSize="14" Background="#DBD4D3"  HorizontalAlignment="Stretch"> Delete Item </Button>
+            <Button FontSize="14" Background="#DBD4D3"  HorizontalAlignment="Stretch"> View ledger</Button>
+            <Button FontSize="14" Background="#DBD4D3"  HorizontalAlignment="Stretch"> Undo</Button>
+        </StackPanel>
+        
+        <!--="Buttom Info and exit"-->
+        <StackPanel 
+         Grid.Row="4"
+         Grid.Column="0"
+         HorizontalAlignment="Left"
+         VerticalAlignment="Bottom"
+         >
+         
+            <TextBlock TextAlignment="Center" Margin="10" Foreground="#DBD4D3">Made By Arapaima 01</TextBlock>
+        </StackPanel>
+    </Grid>
+    
+
+</Window>
